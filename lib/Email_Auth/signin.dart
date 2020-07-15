@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_authentication/Email_Auth/forgot_password.dart';
 import 'package:firebase_authentication/Email_Auth/homepage.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class _SignInState extends State<SignIn>
   bool wrongEmail=false;
   bool wrongPassword=false;
   bool emailDisabled=false;
-/*
+
   @override
   void initState() {
     emailcon = TextEditingController();
@@ -34,7 +35,7 @@ class _SignInState extends State<SignIn>
       setState(() {});
     });
     super.initState();
-  }*/
+  }
 
   @override
   void dispose() {
@@ -69,9 +70,7 @@ class _SignInState extends State<SignIn>
   {
     if(emailDisabled)
     {
-      print("emaildisabled");
       _showDialog();
-      print("emaildisabled2");
     }
     else if(!emailDisabled)
     {
@@ -82,6 +81,9 @@ class _SignInState extends State<SignIn>
         {
           Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(BuildContext context){return HomePage();}));
         }
+        wrongEmail=false;
+        wrongPassword=false;
+        emailDisabled=false;
       }
     }
     
@@ -182,10 +184,15 @@ class _SignInState extends State<SignIn>
                                     decoration: InputDecoration(hintText:"password"),
                                   ),
                                   SizedBox(height:10),
-                                  Container(
-                                    padding: EdgeInsets.all(10),
-                                    alignment: Alignment.centerRight,
-                                    child:Text("Forgot Password?")
+                                  GestureDetector(
+                                      onTap: (){
+                                        Navigator.of(context).push(MaterialPageRoute(builder:(BuildContext context){return ForgotPassword();}));
+                                        },
+                                      child: Container(
+                                      padding: EdgeInsets.all(10),
+                                      alignment: Alignment.centerRight,
+                                      child:Text("Forgot Password?")
+                                    ),
                                   ),
                                   SizedBox(height:18),
                                   Container(

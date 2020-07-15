@@ -1,16 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'homepage.dart';
+import 'email_google.dart';
 
-class SignUp extends StatefulWidget {
-  final Function toggleView;
-  SignUp(this.toggleView);
+
+class SignUpPart extends StatefulWidget 
+{
   @override
-  _SignUpState createState() => _SignUpState();
+  _SignUpPartState createState() => _SignUpPartState();
 }
 
-class _SignUpState extends State<SignUp> 
+class _SignUpPartState extends State<SignUpPart> 
 {
   final formkey=GlobalKey<FormState>();
 
@@ -47,7 +47,7 @@ class _SignUpState extends State<SignUp>
       await firebaseSignUp(emailcon.text,passwordcon.text);
       if(emailExists==false)
       {
-         Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(BuildContext context){return HomePage();}));
+         Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(BuildContext context){return LinkEmailGoogleScreen();}));
       }
       emailExists=false;
     }
@@ -151,7 +151,7 @@ class _SignUpState extends State<SignUp>
                                     children: [
                                       Text("Already have an Account? ",style: TextStyle(fontSize: 15),),
                                       GestureDetector(
-                                        onTap: widget.toggleView,
+                                        //onTap: widget.toggleView,
                                         child: Text("Sign In",
                                                 style: TextStyle(fontSize: 15,decoration: TextDecoration.underline),)
                                                 )
