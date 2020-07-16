@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'email_google.dart';
+import 'email_phone.dart';
 
 
 class SignUpPart extends StatefulWidget 

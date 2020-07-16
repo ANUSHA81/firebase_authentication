@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_authentication/Link_Account.dart/email_phone.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -20,7 +21,7 @@ class _LinkEmailGoogleScreenState extends State<LinkEmailGoogleScreen>
   TextEditingController emailcon=new TextEditingController();
   TextEditingController passwordcon=new TextEditingController();
 
-  void linkEmailGoogle() async
+  linkEmailGoogle() async
   { 
     try
     {
@@ -30,6 +31,7 @@ class _LinkEmailGoogleScreenState extends State<LinkEmailGoogleScreen>
       {
         print(existingUser.providerData[i].providerId);
       }
+      
 
     //get the credentials of the new linking account
     final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -49,6 +51,7 @@ class _LinkEmailGoogleScreenState extends State<LinkEmailGoogleScreen>
     {
       print(existingUser.providerData[i].providerId);
     }
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(BuildContext context){return LinkEmailPhoneScreen();}));
     }
     catch(e)
     {
@@ -59,11 +62,14 @@ class _LinkEmailGoogleScreenState extends State<LinkEmailGoogleScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:Text("Link")),
+      appBar: AppBar(title:Text("Link Google Account")),
       body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Center(child: Text("Do you want to link your google account with existing account? ",style: TextStyle(color: Colors.green,fontSize: 30),)),
+                Padding(
+                  padding: const EdgeInsets.only(left:50),
+                  child: Center(child: Text("Do you want to link your google account with existing account? ",style: TextStyle(color: Colors.green,fontSize: 30),)),
+                ),
                 SizedBox(height: 20,),
                 RaisedButton(
                   child: Text("Yes"),
