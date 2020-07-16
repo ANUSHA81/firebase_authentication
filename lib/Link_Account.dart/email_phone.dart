@@ -6,7 +6,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'email_google.dart';
 import 'linkedsuccesspage.dart';
-import 'page.dart';
 
 
 class LinkEmailPhoneScreen extends StatefulWidget 
